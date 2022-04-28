@@ -1,5 +1,5 @@
 resource "aws_security_group" "my_private_sg" {
-  name        = "my_private_app_sg"
+  name        = "my_private_sg"
   description = "Allow access to the server"
   vpc_id      = data.aws_vpc.main_vpc.id
 
@@ -10,7 +10,7 @@ resource "aws_security_group" "my_private_sg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
 
   }
 
@@ -19,7 +19,7 @@ resource "aws_security_group" "my_private_sg" {
     from_port       = 5601
     to_port         = 5601
     protocol        = "tcp"
-    security_groups = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
 
   }
 
