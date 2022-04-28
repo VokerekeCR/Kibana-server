@@ -15,7 +15,7 @@ data "aws_vpc" "main" {
     }
 }
 
-data "aws_subnet" "private" {
+data "aws_subnet" "private-elk" {
     filter {
     name = "tag:Name"
     values = [var.private_subnet_name]
