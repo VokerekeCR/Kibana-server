@@ -5,6 +5,6 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "aws_ebs_volume" "kibana_storage" {
-  availability_zone = "us-east-1b"
+  availability_zone = "us-east-2a"
   size              = 50
 }

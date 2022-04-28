@@ -1,6 +1,6 @@
 # DEFINING ALL VARIABLES
 variable "aws_owner_id" {
-    description = "Contains the Owner ID of the ami for amazon linux"
+    description = "Contains the Owner ID of the ami for Ubuntu"
     type = string   
 }
 

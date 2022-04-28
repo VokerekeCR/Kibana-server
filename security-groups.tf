@@ -1,16 +1,16 @@
-resource "aws_security_group" "my_private_sg" {
-  name        = "my_private_sg"
+resource "aws_security_group" "kibana_sg" {
+  name        = "kibana_sg"
   description = "Allow access to the server"
-  vpc_id      = data.aws_vpc.main_vpc.id
+  vpc_id      = data.aws_vpc.main.id
 
 
   # INBOUND CONNECTIONS
   ingress {
-    description     = "allowd ssh"
+    description     = "allow Kibana access to server"
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["192.168.0.0/16"]
 
   }
 
@@ -19,7 +19,7 @@ resource "aws_security_group" "my_private_sg" {
     from_port       = 5601
     to_port         = 5601
     protocol        = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["192.168.0.0/16"]
 
   }
 
