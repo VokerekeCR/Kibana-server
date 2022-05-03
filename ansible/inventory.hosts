@@ -1,0 +1,10 @@
+[elasticsearch]
+192.168.2.217
+
+[Kibana]
+192.168.1.157
+
+[Logstash]
+192.168.2.51
+
+ansible_ssh_common_args:'-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand=“ssh -A  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -W %h:%p -q ubuntu@3.144.252.56”'
