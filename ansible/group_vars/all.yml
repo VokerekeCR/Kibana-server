@@ -15,3 +15,5 @@ nginx_user: www-data
 e_ip: 192.168.2.217
 k_ip: 192.168.1.157
 l_ip: 192.168.2.51
+
+ansible_ssh_common_args: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand=“ssh -A  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -W %h:%p -q ubuntu@3.144.252.56”'
