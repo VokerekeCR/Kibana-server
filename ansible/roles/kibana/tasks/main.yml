@@ -5,28 +5,36 @@
 # Add the Java ppa repository
 - name: Add Java repository
   apt_repository:
-   repo: ppa:webupd8team/java
+   repo: ppa:linuxuprising/java
 # Automatically accepts the Oracle License popup in the terminal
 - name: Automatically select the Oracle License
   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 # Install Java 8
 - name: Install the Java 8 package
   apt:
-   name: oracle-java8-installer
+   name: openjdk-8-jdk
    state: present
    update_cache: yes
 # Installing Kibana
 #
 # Add Kibana APT-repository
-- name: Adding Kibana APT repository
+- name: Add an Apt signing key for ELK stack
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+- name: Add Elastic source list
   apt_repository:
-   repo: deb http://packages.elastic.co/kib... stable main
-   state: present
-# Install Kibana
-- name: Update repositories cache and install Kibana
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
+- name: Update package lists
   apt:
-   name: kibana
-   update_cache: yes
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+- name: Install Kibana
+  apt:
+    name: kibana
+    state: present
 # Update kibana config file to only accept local connections
 - name: Updating the config file to restrict outside access
   lineinfile:

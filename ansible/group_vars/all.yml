@@ -13,7 +13,9 @@ kibana_password: admin
 nginx_user: www-data
 # The IP address of the ELK server that is going to be installed
 e_ip: 192.168.2.217
-k_ip: 192.168.1.157
+k_ip: 192.168.2.134
 l_ip: 192.168.2.51
 
-ansible_ssh_common_args: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand=“ssh -A  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -W %h:%p -q ubuntu@3.144.252.56”'
+#ansible_ssh_common_args: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o ProxyCommand="ssh -A  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -W %h:%p -q ubuntu@3.142.201.147"'
+ansible_ssh_common_args: '-i ~/.ssh/group-3.pem -J ubuntu@3.142.201.147'
+ansible_ssh_private_key_file: '~/.ssh/group-3.pem'
